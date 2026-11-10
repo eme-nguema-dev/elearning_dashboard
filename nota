@@ -1,0 +1,80 @@
+streamlit run view/dashboard.py
+
+Credenciales:
+
+**Enseignant:**
+- Email-Mot de passe: j.dupont@elearning.comprof123
+- aaaa@gmail.comaaa123
+
+**Administration:**
+- Email-Mot de passe: l.moreau@elearning.comadmin123
+
+**Responsable pédagogique:**
+- Email-Mot de passe: m.simon@elearning.comresp123
+
+*************************************************************************************
+*************************************************************************************
+Datos educativos reales:
+
+Kaggle → kaggle.com — busca "student performance" o "elearning dataset" — hay muchos CSV y Excel gratuitos
+UCI Machine Learning Repository → archive.ics.uci.edu — tiene el famoso dataset "Student Performance"
+
+Generadores de datos falsos:
+
+Mockaroo → mockaroo.com — genera CSV/Excel/JSON/XML con los campos que tú defines
+generatedata.com — similar a Mockaroo
+
+Datos abiertos:
+
+data.gouv.fr → data.gouv.fr — datos educativos franceses en CSV
+data.europa.eu → datos educativos europeos
+
+Para tu proyecto te recomiendo Mockaroo — puedes definir exactamente los campos que necesitas (nom, prenom, note, classe...) y descargar en CSV, Excel, JSON o XML directamente. Es perfecto para probar los 5 formatos de importación.
+
+Detalles de la clave de API
+Clave de API
+AIzaSyAUTN0exqpV6mUHYLTLoAWAJPAJiPN94W4
+Nombre
+Gemini API Key
+Nombre del proyecto
+projects/624030731290
+Número del proyecto
+624030731290
+
+
+
+Detalles de la clave de API
+Clave de API
+AIzaSyB-wrRZsjH5RxFCWdXgNKrTHkaomahsQyM
+Nombre
+eme-nguema
+Nombre del proyecto
+projects/1088885438556
+Número del proyecto
+1088885438556
+
+
+Los modelos K-Means y Random Forest funcionan perfectamente. El error es solo el nombre del modelo de Gemini — gemini-1.5-flash ya no está disponible en la API v1beta.
+Sobre las probabilidades — el Random Forest calcula la probabilidad de aprobar basándose en 3 factores:
+
+moyenne → el más importante
+temps_passe → tiempo dedicado
+nb_connexions → frecuencia de conexión
+
+Por eso Dupuis y Martin tienen probabilidad 0 — tienen media 0 porque fueron importados sin notas reales.
+
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
+  -H 'Content-Type: application/json' \
+  -H 'X-goog-api-key: AIzaSyB-wrRZsjH5RxFCWdXgNKrTHkaomahsQyM' \
+  -X POST \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {
+            "text": "Explain how AI works in a few words"
+          }
+        ]
+      }
+    ]
+  }'
